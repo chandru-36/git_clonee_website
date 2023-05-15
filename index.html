@@ -6,10 +6,10 @@
     function extractAuthorizationCode() {
       var url = window.location.href;
       var code = getQueryParameter(url, 'code');
-      alert(url);
-      alert(code);
+     // alert(url);
+     // alert(code);
       var redirectUrl = 'chandru-36.github.io://redirect?code=' + code;
-      //window.location.href = redirectUrl;
+      window.location.href = redirectUrl;
     }
 
     function getQueryParameter(url, name) {
