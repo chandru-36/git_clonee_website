@@ -1,9 +1,28 @@
+<!DOCTYPE html>
 <html>
+<head>
+  <title>GitHub Authentication Redirect</title>
+  <script>
+    function extractAuthorizationCode() {
+      var url = window.location.href;
+      var code = getQueryParameter(url, 'code');
+      var redirectUrl = 'YOUR_APP_CUSTOM_SCHEME://redirect?code=' + code;
+      window.location.href = redirectUrl;
+    }
+
+    function getQueryParameter(url, name) {
+      name = name.replace(/[\[\]]/g, '\\$&');
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+      var results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    window.onload = extractAuthorizationCode;
+  </script>
+</head>
 <body>
-<center>
-<h4>
-GIT HUB Clonee app - Home page
-</h4>
-</center>
+  <h1>Redirecting...</h1>
 </body>
 </html>
